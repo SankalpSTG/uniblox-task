@@ -10,9 +10,7 @@ export class CartController {
   ){}
   @Post("/item")
   async AddItemToCart(@Body() item: AddToCartDto){
-    return Responses.SuccessData({
-      cartId: this.cartOrchestratedService.addItemToCart(item)
-    })
+    return Responses.SuccessData(this.cartOrchestratedService.addItemToCart(item))
   }
   @Get("/:id")
   async GetCart(@Param("id") cartId: string){

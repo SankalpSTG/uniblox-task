@@ -8,7 +8,8 @@ export class CartDataStore {
   createCart(){
     const cart: CartType = {
       cartId: (new Date().getTime()).toString(36) + Math.round(Math.random() * 1000).toString(36),
-      items: []
+      items: [],
+      isLocked: false
     }
     this.carts.set(cart.cartId, cart)
     return cart.cartId
@@ -22,9 +23,10 @@ export class CartDataStore {
   updateCart(cart: CartType){
     this.carts.set(cart.cartId, cart)
   }
-  deleteCart(cartId: string){
+  lockCart(cartId: string){
     let cart = this.carts.get(cartId)
     if(!cart) return
-    this.carts.delete(cartId)
+    cart.isLocked = true
+    this.carts.set(cartId, cart)
   }
 }

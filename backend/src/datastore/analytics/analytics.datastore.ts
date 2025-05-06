@@ -5,6 +5,7 @@ import { CartItemType } from "../cart/types";
 @Injectable()
 export class AnalyticsDataStore {
   private readonly storeMetrics: StoreMetricsType = {
+      numberOfOrders: 0,
       totalPurchaseAmount: 0,
       purchaseCountPerProduct: new Map(),
       totalProductsPurchased: 0,
@@ -13,6 +14,9 @@ export class AnalyticsDataStore {
   }
   getAllMetrics(){
     return this.storeMetrics
+  }
+  getOrdersCount(){
+    return this.storeMetrics.numberOfOrders
   }
   updateCouponUsage(couponId: string){
     this.storeMetrics.usedCoupons.push(couponId)
@@ -35,5 +39,8 @@ export class AnalyticsDataStore {
   }
   updateTotalDiscount(amount: number){
     this.storeMetrics.totalDiscountAmount += amount
+  }
+  incrementOrderCount(){
+    this.storeMetrics.numberOfOrders += 1
   }
 }

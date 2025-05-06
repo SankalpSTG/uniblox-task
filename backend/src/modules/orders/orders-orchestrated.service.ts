@@ -20,6 +20,7 @@ export class OrdersOrchestratedService {
       this.couponsService.invalidateCoupon(data.discountCode)
     }
     const order = this.ordersService.createOrder(cart.items, data.discountCode)
+    this.cartService.lockCart(data.cartId)
     this.analyticsService.updateMetrics(order)
     return order
   }

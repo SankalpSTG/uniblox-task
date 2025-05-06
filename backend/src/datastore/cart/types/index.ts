@@ -5,5 +5,6 @@ export type CartItemType = {
 }
 export type CartType = {
   cartId: string,
-  items: CartItemType[]
+  items: CartItemType[],
+  isLocked: boolean
 }

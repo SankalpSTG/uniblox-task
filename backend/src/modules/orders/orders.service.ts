@@ -17,7 +17,7 @@ export class OrdersService {
       items: items,
       baseAmount: totalAmount,
       discountCoupon: discountCode || null,
-      finalAmount: discountCode? totalAmount * 0.9: totalAmount,
+      finalAmount: discountCode? Math.ceil(totalAmount * 0.9): totalAmount,
       createdAt: new Date(),
       status: OrderStatusEnum.Processing
     })
