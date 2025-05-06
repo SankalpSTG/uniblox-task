@@ -1,13 +1,13 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable } from "@nestjs/common";
 import { CartType } from "./types";
-
+import {convert} from "any-to-any"
 @Injectable()
 export class CartDataStore {
   private readonly carts = new Map<string, CartType>()
   
   createCart(){
     const cart: CartType = {
-      cartId: "",
+      cartId: convert(new Date().getTime(), 10, 36),
       items: []
     }
     this.carts.set(cart.cartId, cart)
@@ -16,7 +16,7 @@ export class CartDataStore {
   getCart(cartId?: string): CartType{
     if(!cartId) return this.carts.get(this.createCart())!
     let cart = this.carts.get(cartId)
-    if(!cart) return this.carts.get(this.createCart())!
+    if(!cart) throw new BadRequestException("Invalid Cart ID Provided")
     return cart
   }
   updateCart(cart: CartType){

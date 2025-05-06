@@ -1,4 +1,4 @@
-import { AmountType, CartItemType } from "src/datastore/cart/types"
+import { CartItemType } from "src/datastore/cart/types"
 
 export enum OrderStatusEnum {
   Processing = "processing",
@@ -6,9 +6,9 @@ export enum OrderStatusEnum {
 }
 export type OrderDetailsType = {
   items: CartItemType[]
-  baseAmount: AmountType
+  baseAmount: number
   discountCoupons: string[],
-  finalAmount: AmountType
+  finalAmount: number
   createdAt: Date
   status: OrderStatusEnum
 }

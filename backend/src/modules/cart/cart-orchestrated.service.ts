@@ -13,9 +13,12 @@ export class CartOrchestratedService {
   addItemToCart(item: AddToCartDto) {
     const product = this.productsService.getProduct(item.productId);
     if (!product) throw new NotFoundException('Product Not Found');
-    this.cartService.addItemToCart({
+    return this.cartService.addItemToCart({
       productId: product.productId,
       costPerItem: product.costPerItem
     }, item.cartId)
+  }
+  getCart(cartId: string){
+    return this.cartService.getCart(cartId)
   }
 }

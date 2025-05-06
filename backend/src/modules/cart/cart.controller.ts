@@ -1,7 +1,7 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AddToCartDto } from './dto/add-to-cart.dto';
-import { CartService } from './cart.service';
 import { CartOrchestratedService } from './cart-orchestrated.service';
+import { Responses } from 'src/misc/response';
 
 @Controller('cart')
 export class CartController {
@@ -10,6 +10,12 @@ export class CartController {
   ){}
   @Post("/item")
   async AddItemToCart(@Body() item: AddToCartDto){
-    this.cartOrchestratedService.addItemToCart(item)
+    return Responses.SuccessData({
+      cartId: this.cartOrchestratedService.addItemToCart(item)
+    })
+  }
+  @Get("/:id")
+  async GetCart(@Param("id") cartId: string){
+    return this.cartOrchestratedService.getCart(cartId)
   }
 }

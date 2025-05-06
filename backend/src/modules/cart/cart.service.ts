@@ -15,10 +15,14 @@ export class CartService {
       if(cart.items[i].productId == item.productId){
         cart.items[i].quantity += 1
         this.cartDataStore.updateCart(cart)
-        return
+        return cart.cartId
       }
     }
     cart.items.push({...item, quantity: 1})
     this.cartDataStore.updateCart(cart)
+    return cart.cartId
+  }
+  getCart(cartId: string){
+    return this.cartDataStore.getCart(cartId)
   }
 }
