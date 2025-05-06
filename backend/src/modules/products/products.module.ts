@@ -6,6 +6,6 @@ import { ProductsDataStore } from 'src/datastore/products/products.datastore';
 @Module({
   controllers: [ProductsController],
   providers: [ProductsService, ProductsDataStore],
-  exports: [ProductsService, ProductsDataStore]
+  exports: [ProductsService]
 })
 export class ProductsModule {}

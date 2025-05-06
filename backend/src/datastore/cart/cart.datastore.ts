@@ -7,7 +7,7 @@ export class CartDataStore {
   
   createCart(){
     const cart: CartType = {
-      cartId: convert(new Date().getTime(), 10, 36),
+      cartId: (new Date().getTime()).toString(36) + Math.round(Math.random() * 1000).toString(36),
       items: []
     }
     this.carts.set(cart.cartId, cart)
@@ -21,5 +21,10 @@ export class CartDataStore {
   }
   updateCart(cart: CartType){
     this.carts.set(cart.cartId, cart)
+  }
+  deleteCart(cartId: string){
+    let cart = this.carts.get(cartId)
+    if(!cart) return
+    this.carts.delete(cartId)
   }
 }
