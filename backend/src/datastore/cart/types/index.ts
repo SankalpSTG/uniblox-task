@@ -1,11 +1,7 @@
-export type AmountType = {
-  amount: number,
-  currency: string
-}
 export type CartItemType = {
-  title: string,
-  description: string,
-  price: AmountType,
+  productId: string
+  quantity: number
+  costPerItem: number,
 }
 export type CartType = {
   cartId: string,

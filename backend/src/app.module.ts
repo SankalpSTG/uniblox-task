@@ -4,11 +4,12 @@ import { AppService } from './app.service';
 import { CartModule } from './modules/cart/cart.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { AdminModule } from './modules/admin/admin.module';
-import { OrdersorchestratedController } from './modules/ordersorchestrated/ordersorchestrated.controller';
+import { OrdersController } from './modules/orders/orders.controller';
+import { ProductsModule } from './modules/products/products.module';
 
 @Module({
-  imports: [CartModule, OrdersModule, AdminModule],
-  controllers: [AppController, OrdersorchestratedController],
+  imports: [CartModule, OrdersModule, AdminModule, ProductsModule],
+  controllers: [AppController, OrdersController],
   providers: [AppService],
 })
 export class AppModule {}

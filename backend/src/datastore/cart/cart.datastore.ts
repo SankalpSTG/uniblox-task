@@ -1,5 +1,5 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
-import { CartItemType, CartType } from "./types";
+import { Injectable } from "@nestjs/common";
+import { CartType } from "./types";
 
 @Injectable()
 export class CartDataStore {
@@ -13,15 +13,13 @@ export class CartDataStore {
     this.carts.set(cart.cartId, cart)
     return cart.cartId
   }
-  getCart(cartId: string): CartType | null{
+  getCart(cartId?: string): CartType{
+    if(!cartId) return this.carts.get(this.createCart())!
     let cart = this.carts.get(cartId)
-    if(!cart) return null
+    if(!cart) return this.carts.get(this.createCart())!
     return cart
   }
-  addToCart(cartId: string, item: CartItemType){
-    let cart = this.carts.get(cartId)
-    if(!cart) throw new NotFoundException("Cart Not Found")
-    cart.items.push(item)
-    this.carts.set(cartId, cart)
+  updateCart(cart: CartType){
+    this.carts.set(cart.cartId, cart)
   }
 }
