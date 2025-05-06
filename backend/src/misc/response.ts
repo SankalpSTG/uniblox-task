@@ -1,5 +1,5 @@
 export const Responses = {
-  SuccessData:(data?: any) =>({
+  SuccessData:<T=any>(data?: T) =>({
     message: "success",
     data: data
   })

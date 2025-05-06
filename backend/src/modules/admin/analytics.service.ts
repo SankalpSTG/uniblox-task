@@ -2,6 +2,7 @@ import { AnalyticsDataStore } from '@/datastore/analytics/analytics.datastore';
 import { CouponsDataStore } from '@/datastore/coupons/coupons.datastore';
 import { OrderType } from '@/datastore/orders/types';
 import { Injectable } from '@nestjs/common';
+import { GetMetricsResponseType } from './types';
 
 @Injectable()
 export class AnalyticsService {
@@ -9,7 +10,7 @@ export class AnalyticsService {
     private readonly analyticsDataStore: AnalyticsDataStore
   ){}
 
-  getMetrics(){
+  getMetrics(): GetMetricsResponseType{
     const metrics = this.analyticsDataStore.getAllMetrics()
     return {...metrics, purchaseCountPerProduct: Object.fromEntries(metrics.purchaseCountPerProduct.entries())}
   }

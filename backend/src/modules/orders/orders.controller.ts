@@ -1,6 +1,8 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CheckoutDto } from './dto/checkout.dto';
 import { OrdersOrchestratedService } from './orders-orchestrated.service';
+import { Responses } from '@/misc/response';
+import { OrderType } from '@/datastore/orders/types';
 
 @Controller('orders')
 export class OrdersController {
@@ -9,6 +11,6 @@ export class OrdersController {
   ){}
   @Post("/checkout")
   async checkout(@Body() data: CheckoutDto){
-    return this.ordersOrchestratedService.checkout(data)
+    return Responses.SuccessData<OrderType>(this.ordersOrchestratedService.checkout(data))
   }
 }

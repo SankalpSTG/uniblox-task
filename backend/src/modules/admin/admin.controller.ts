@@ -2,6 +2,7 @@ import { CouponsDataStore } from '@/datastore/coupons/coupons.datastore';
 import { Controller, Get } from '@nestjs/common';
 import { AdminOrchestratedService } from './admin-orchestrated.service';
 import { Responses } from '@/misc/response';
+import { GetMetricsResponseType } from './types';
 
 @Controller('admin')
 export class AdminController {
@@ -14,6 +15,6 @@ export class AdminController {
   }
   @Get("/metrics")
   async getMetrics(){
-    return Responses.SuccessData(this.adminOrchestratedService.getMetrics())
+    return Responses.SuccessData<GetMetricsResponseType>(this.adminOrchestratedService.getMetrics())
   }
 }

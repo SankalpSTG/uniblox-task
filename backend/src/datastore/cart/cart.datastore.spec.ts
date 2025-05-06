@@ -1,5 +1,5 @@
 import { CartDataStore } from "./cart.datastore";
-import { BadRequestException, NotFoundException } from "@nestjs/common";
+import { NotFoundException } from "@nestjs/common";
 
 describe('CartDataStore', () => {
   let dataStore: CartDataStore
@@ -58,12 +58,9 @@ describe('CartDataStore', () => {
   })
   
   it("cart should be deleted", () => {
-    try{
       let cart = dataStore.getCart()
-      dataStore.deleteCart(cart.cartId)
+      dataStore.lockCart(cart.cartId)
       cart = dataStore.getCart(cart.cartId)
-    }catch(error){
-      expect(error).toBeInstanceOf(NotFoundException)
-    }
+      expect(cart.isLocked).toBe(true)
   })
 });

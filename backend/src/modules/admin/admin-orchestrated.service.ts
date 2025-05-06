@@ -3,6 +3,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { AnalyticsService } from './analytics.service';
 import { CouponsService } from './coupons.service';
 import { ConfigService } from '@nestjs/config';
+import { GetMetricsResponseType } from './types';
 
 @Injectable()
 export class AdminOrchestratedService {
@@ -17,7 +18,7 @@ export class AdminOrchestratedService {
     if((ordersCount + 1) % numOrdersForCoupon !== 0) throw new BadRequestException("Currently you are not eligible for a coupon. Please come back later")
     return this.couponsService.getCoupon()
   }
-  getMetrics(){
+  getMetrics(): GetMetricsResponseType{
     return this.analyticsService.getMetrics()
   }
 }

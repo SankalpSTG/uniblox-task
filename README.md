@@ -30,6 +30,10 @@ Run APIs in following order
     6. Total Discount Amount
 
 
+### Unit Testing
+
+Simply run ```npm run test``` to test all the unit tests written. 
+
 ## Summary
 
 There are 4 APIs

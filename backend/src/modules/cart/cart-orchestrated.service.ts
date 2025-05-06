@@ -3,6 +3,7 @@ import { AddToCartDto } from './dto/add-to-cart.dto';
 import { ProductsService } from '../products/products.service';
 import { CartService } from './cart.service';
 import { NotFoundError } from 'rxjs';
+import { CartType } from '@/datastore/cart/types';
 
 @Injectable()
 export class CartOrchestratedService {
@@ -10,7 +11,7 @@ export class CartOrchestratedService {
     private readonly productsService: ProductsService,
     private readonly cartService: CartService,
   ) {}
-  addItemToCart(item: AddToCartDto) {
+  addItemToCart(item: AddToCartDto): CartType {
     const product = this.productsService.getProduct(item.productId);
     if (!product) throw new NotFoundException('Product Not Found');
     return this.cartService.addItemToCart({
@@ -18,7 +19,7 @@ export class CartOrchestratedService {
       costPerItem: product.costPerItem
     }, item.cartId)
   }
-  getCart(cartId: string){
+  getCart(cartId: string): CartType{
     return this.cartService.getCart(cartId)
   }
 }
