@@ -9,7 +9,6 @@ export class OrdersController {
   ){}
   @Post("/checkout")
   async checkout(@Body() data: CheckoutDto){
-    console.log(data)
     return this.ordersOrchestratedService.checkout(data)
   }
 }

@@ -5,6 +5,8 @@ Postman collection is available in the backend folder.
 
 ## How To Test
 
+Please copy the ```.env.example``` file to ```.env``` file.
+
 Please import the postman collection from the backend to your postman.
 
 All the variables are directly set using pre/post run scripts and hence you will not need to set variables manually unless for some unknown edge case.
