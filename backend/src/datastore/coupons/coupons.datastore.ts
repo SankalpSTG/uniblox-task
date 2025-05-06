@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { CouponType } from "./types";
 
 @Injectable()
@@ -12,24 +12,33 @@ export class CouponsDataStore {
     }else{
       const newCoupon:CouponType = {
         coupon: new Date().getTime().toString(36) + Math.round(Math.random() * 1000).toString(36),
-        orderId: null
+        isValid: true
       }
       this.coupons.set(newCoupon.coupon, newCoupon)
       this.unusedCouponIds.add(newCoupon.coupon)
       return newCoupon.coupon
     }
   }
-
-  useCoupon(couponId: string, orderId: string){
+  canUseCoupon(couponId: string){
     const coupon = this.coupons.get(couponId)
     if(!coupon){
-      return
+      return false
     }
-    if(coupon.orderId !== null){
-      return
+    if(coupon.isValid === false){
+      return false
+    }
+    return true
+  }
+  invalidateCoupon(couponId: string){
+    const coupon = this.coupons.get(couponId)
+    if(!coupon){
+      throw new NotFoundException("Coupon Not Found")
+    }
+    if(coupon.isValid === false){
+      throw new BadRequestException("Coupon is expired")
     }
     this.unusedCouponIds.delete(couponId)
-    coupon.orderId = orderId
+    coupon.isValid = false
     this.coupons.set(couponId, coupon)
   }
 }

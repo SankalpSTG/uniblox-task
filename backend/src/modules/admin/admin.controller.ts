@@ -14,11 +14,6 @@ export class AdminController {
   }
   @Get("/metrics")
   async getMetrics(){
-    return Responses.SuccessData({
-      totalItemsPurchased: 0,
-      totalPurchaseAmount: 0,
-      usedDiscountCodes: [],
-      totalDiscountAmount: 0
-    })
+    return Responses.SuccessData(this.adminOrchestratedService.getMetrics())
   }
 }
