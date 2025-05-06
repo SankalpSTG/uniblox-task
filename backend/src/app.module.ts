@@ -9,7 +9,7 @@ import { ProductsModule } from './modules/products/products.module';
 
 @Module({
   imports: [CartModule, OrdersModule, AdminModule, ProductsModule],
-  controllers: [AppController, OrdersController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

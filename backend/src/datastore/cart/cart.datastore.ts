@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { CartType } from "./types";
 import {convert} from "any-to-any"
 @Injectable()
@@ -16,7 +16,7 @@ export class CartDataStore {
   getCart(cartId?: string): CartType{
     if(!cartId) return this.carts.get(this.createCart())!
     let cart = this.carts.get(cartId)
-    if(!cart) throw new BadRequestException("Invalid Cart ID Provided")
+    if(!cart) throw new NotFoundException("Cart Not Found")
     return cart
   }
   updateCart(cart: CartType){

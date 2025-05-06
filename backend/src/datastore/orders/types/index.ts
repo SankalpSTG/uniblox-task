@@ -7,7 +7,7 @@ export enum OrderStatusEnum {
 export type OrderDetailsType = {
   items: CartItemType[]
   baseAmount: number
-  discountCoupons: string[],
+  discountCoupon: string | null,
   finalAmount: number
   createdAt: Date
   status: OrderStatusEnum

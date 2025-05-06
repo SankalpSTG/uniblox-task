@@ -8,6 +8,7 @@ import { ProductsDataStore } from 'src/datastore/products/products.datastore';
 
 @Module({
   controllers: [CartController],
-  providers: [CartService, CartDataStore, CartOrchestratedService, ProductsService, ProductsDataStore]
+  providers: [CartService, CartDataStore, CartOrchestratedService, ProductsService, ProductsDataStore],
+  exports: [CartService, CartDataStore]
 })
 export class CartModule {}

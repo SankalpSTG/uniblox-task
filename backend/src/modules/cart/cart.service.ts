@@ -1,8 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CartDataStore } from 'src/datastore/cart/cart.datastore';
-import { CartItemType } from 'src/datastore/cart/types';
-import { AddToCartDto } from './dto/add-to-cart.dto';
 import { CartItemTypeWithoutQuantity } from './types';
+import { CartDataStore } from 'src/datastore/cart/cart.datastore';
 
 @Injectable()
 export class CartService {
@@ -15,12 +13,12 @@ export class CartService {
       if(cart.items[i].productId == item.productId){
         cart.items[i].quantity += 1
         this.cartDataStore.updateCart(cart)
-        return cart.cartId
+        return cart
       }
     }
     cart.items.push({...item, quantity: 1})
     this.cartDataStore.updateCart(cart)
-    return cart.cartId
+    return cart
   }
   getCart(cartId: string){
     return this.cartDataStore.getCart(cartId)
