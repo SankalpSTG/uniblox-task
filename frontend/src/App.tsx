@@ -25,7 +25,7 @@ function App() {
           },
         ])}
       />
-      <Toaster />
+      <Toaster/>
     </Provider>
   );
 }

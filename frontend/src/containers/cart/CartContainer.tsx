@@ -4,10 +4,12 @@ import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { checkout } from "../../store/checkout/checkout.logic";
 import { cartActions } from "../../store/cart/cart.state";
+import { couponActions } from "../../store/coupon/coupon.state";
 
 const CartContainer = () => {
   const cartState = useAppSelector((store) => store.cart);
   const checkoutState = useAppSelector((store) => store.checkout);
+  const [coupon, setCoupon] = useState("")
   const dispatch = useAppDispatch()
   const naviagte = useNavigate()
   const totalAmount = useMemo(() => {
@@ -22,12 +24,14 @@ const CartContainer = () => {
   const onCheckout = () => {
     if (!cartState.data) return toast("Something went wrong!");
     dispatch(checkout({
-      cartId: cartState.data.cartId
+      cartId: cartState.data.cartId,
+      discountCode: coupon.length > 0? coupon: undefined
     }))
   };
   useEffect(() => {
     if(!checkoutState.isLoading && checkoutState.data){
       dispatch(cartActions.reset())
+      dispatch(couponActions.reset())
       naviagte("/order")
     }
   }, [checkoutState.isLoading])
@@ -58,7 +62,7 @@ const CartContainer = () => {
               <div>Rs. {totalAmount}</div>
             </div>
             <div className="flex items-center justify-between py-2">
-              <input placeholder="Enter Coupon Code" className="w-full border border-[#EFEFEF] rounded-md py-2 px-4" />
+              <input value={coupon} onChange={(e) => setCoupon(e.target.value)} placeholder="Enter Coupon Code" className="w-full border border-[#EFEFEF] rounded-md py-2 px-4" />
             </div>
             <div onClick={() => onCheckout()} className="text-center p-2 bg-yellow-500 hover:bg-yellow-600 cursor-pointer py-2">Checkout</div>
           </div>

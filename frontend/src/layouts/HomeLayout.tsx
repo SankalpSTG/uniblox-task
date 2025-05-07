@@ -20,8 +20,6 @@ const HomeLayout = () => {
               <div>Admin</div>
             </div>
           </Link>
-        </div>
-        <div>
           <Link to={"/cart"}>
             <FaCartShopping className="text-2xl" />
           </Link>

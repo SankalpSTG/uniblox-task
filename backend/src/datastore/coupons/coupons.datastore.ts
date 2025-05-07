@@ -4,18 +4,18 @@ import { CouponType } from "./types";
 @Injectable()
 export class CouponsDataStore {
   private readonly coupons = new Map<string, CouponType>()
-  private readonly unusedCouponIds:Set<string> = new Set()
+  private unusedCouponId:string | null
   
   getCoupon(): string{
-    if(this.unusedCouponIds.size > 0){
-      return this.unusedCouponIds.values().next().value
+    if(this.unusedCouponId){
+      return this.unusedCouponId
     }else{
       const newCoupon:CouponType = {
         coupon: new Date().getTime().toString(36) + Math.round(Math.random() * 1000).toString(36),
         isValid: true
       }
       this.coupons.set(newCoupon.coupon, newCoupon)
-      this.unusedCouponIds.add(newCoupon.coupon)
+      this.unusedCouponId = newCoupon.coupon
       return newCoupon.coupon
     }
   }
@@ -37,7 +37,7 @@ export class CouponsDataStore {
     if(coupon.isValid === false){
       throw new BadRequestException("Coupon is expired")
     }
-    this.unusedCouponIds.delete(couponId)
+    this.unusedCouponId = null
     coupon.isValid = false
     this.coupons.set(couponId, coupon)
   }

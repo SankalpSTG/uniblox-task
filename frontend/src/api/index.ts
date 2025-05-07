@@ -1,5 +1,6 @@
 import axios, { type AxiosResponse } from "axios";
 import { RequestMethods, type RequestType, type ResponseType } from "./types";
+import toast from "react-hot-toast";
 
 const API = {
   get: async <T=any>(data: RequestType) => {
@@ -18,6 +19,10 @@ const API = {
         })
       }
     }catch(error){
+      if(axios.isAxiosError(error)){
+        const message: string = error.response?.data.message || ""
+        if(message.length > 0) toast.error(message)
+      }
       throw error
     }
   }
