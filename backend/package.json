@@ -75,7 +75,10 @@
       "^src/(.*)$": "<rootDir>/$1",
       "^@/(.*)$": "<rootDir>/$1"
     },
-    "moduleDirectories": ["node_modules", "src"],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }

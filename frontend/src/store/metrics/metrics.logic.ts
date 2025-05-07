@@ -5,7 +5,7 @@ import API from "../../api";
 import { API_ENDPOINTS } from "../../constants/api";
 import type { GetMetricsResponseType } from "./types/metrics";
 
-export const fetchMetrics = createAsyncThunk<GetMetricsResponseType, unknown, ErrorType>(`${REDUCERS.metrics}/fetch-metrics`, async (_, { rejectWithValue }) => {
+export const fetchMetrics = createAsyncThunk<GetMetricsResponseType, undefined, ErrorType>(`${REDUCERS.metrics}/fetch-metrics`, async (_, { rejectWithValue }) => {
   try {
     const response = await API.get({
       url: API_ENDPOINTS.fetchMetrics,

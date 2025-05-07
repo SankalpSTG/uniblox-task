@@ -25,8 +25,9 @@ export const slice = createSlice({
     builder.addCase(fetchProducts.pending, (state) => {
       state.isLoading = true
     })
-    builder.addCase(fetchProducts.fulfilled, (state) => {
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.isLoading = false
+      state.data = action.payload
     })
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.isLoading = false

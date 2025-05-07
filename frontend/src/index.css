@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 html, head, body, header, footer {
   box-sizing: border-box;
   margin: 0px !important;
@@ -7,4 +9,9 @@ html, head, body, header, footer {
 html, body {
   width: 100%;
   height: 100dvh;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
 }

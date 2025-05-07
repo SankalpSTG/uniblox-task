@@ -1,5 +1,10 @@
+export type OrderProductItem = {
+  productId: string,
+  title: string,
+  description: string,
+}
 export type OrderItemType = {
-  productId: string
+  product: OrderProductItem
   quantity: number
-  costPerItem: number
+  costPerItem: number,
 }

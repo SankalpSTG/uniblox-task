@@ -5,7 +5,7 @@ import { REDUCERS } from "../../constants/store";
 import API from "../../api";
 import { API_ENDPOINTS } from "../../constants/api";
 
-export const fetchProducts = createAsyncThunk<GetProductsResponseType, unknown, ErrorType>(`${REDUCERS.products}/fetch-products`, async (_, { rejectWithValue }) => {
+export const fetchProducts = createAsyncThunk<GetProductsResponseType, undefined, ErrorType>(`${REDUCERS.products}/fetch-products`, async (_, { rejectWithValue }) => {
   try {
     const response = await API.get({
       url: API_ENDPOINTS.fetchProducts

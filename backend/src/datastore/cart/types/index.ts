@@ -1,5 +1,10 @@
+export type CartProductItem = {
+  productId: string,
+  title: string,
+  description: string,
+}
 export type CartItemType = {
-  productId: string
+  product: CartProductItem
   quantity: number
   costPerItem: number,
 }

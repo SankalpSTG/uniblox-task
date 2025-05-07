@@ -1,4 +1,4 @@
-import ProductsContainer from "../containers/ProductsContainer"
+import ProductsContainer from "../containers/products/ProductsContainer"
 
 const ProductsLayout = () => {
   return <ProductsContainer/>

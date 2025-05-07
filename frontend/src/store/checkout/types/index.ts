@@ -1,15 +1,20 @@
-export type OrderItemType = {
+export type OrderProductType = {
   productId: string,
+  description: string,
+  title: string
+}
+export type OrderItemType = {
+  product: OrderProductType,
   costPerItem: number,
-  quantity: string
+  quantity: number
 }
 export type OrderType = {
   orderId: string,
   status: string,
   createdAt: string,
-  finalAmount: string,
-  discountCoupon: string,
-  baseAmount: string,
+  finalAmount: number,
+  discountCoupon: string | null,
+  baseAmount: number,
   items: OrderItemType[],
 }
 

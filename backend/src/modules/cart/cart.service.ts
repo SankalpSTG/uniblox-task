@@ -1,23 +1,25 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { CartItemTypeWithoutQuantity } from './types';
 import { CartDataStore } from 'src/datastore/cart/cart.datastore';
+import { ProductType } from '@/datastore/products/types';
+import { CartProductItem } from '@/datastore/cart/types';
+import { AddItemToCartType } from './types';
 
 @Injectable()
 export class CartService {
   constructor(
     private readonly cartDataStore: CartDataStore
   ){}
-  addItemToCart(item: CartItemTypeWithoutQuantity, cartId?: string){
-    const cart = this.cartDataStore.getCart(cartId)
+  addItemToCart(data: AddItemToCartType){
+    const cart = this.cartDataStore.getCart(data.cartId)
     if(cart.isLocked) throw new BadRequestException("Invalid Cart")
     for(let i = 0; i < cart.items.length; i++){
-      if(cart.items[i].productId == item.productId){
+      if(cart.items[i].product.productId == data.product.productId){
         cart.items[i].quantity += 1
         this.cartDataStore.updateCart(cart)
         return cart
       }
     }
-    cart.items.push({...item, quantity: 1})
+    cart.items.push({product: data.product, quantity: 1, costPerItem: data.costPerItem})
     this.cartDataStore.updateCart(cart)
     return cart
   }

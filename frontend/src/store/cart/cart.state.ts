@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { REDUCERS } from '../../constants/store'
 import type { CartState } from './types'
 import { addToCart } from './cart.logic'
+import toast from 'react-hot-toast'
 
 // Define a type for the slice state
 const initialState: CartState = {
@@ -28,6 +29,7 @@ export const slice = createSlice({
     builder.addCase(addToCart.fulfilled, (state, action) => {
       state.isLoading = false
       state.data = action.payload
+      toast("Added Item To Cart")
     })
     builder.addCase(addToCart.rejected, (state, action) => {
       state.isLoading = false

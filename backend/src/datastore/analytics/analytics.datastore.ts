@@ -24,13 +24,13 @@ export class AnalyticsDataStore {
   updateProductPurchaseCount(products: CartItemType[]){
     for(let i = 0; i < products.length; i++){
       this.storeMetrics.totalProductsPurchased += products[i].quantity
-      if(this.storeMetrics.purchaseCountPerProduct.has(products[i].productId)){
+      if(this.storeMetrics.purchaseCountPerProduct.has(products[i].product.productId)){
         this.storeMetrics.purchaseCountPerProduct.set(
-          products[i].productId,
-          this.storeMetrics.purchaseCountPerProduct.get(products[i].productId)! + products[i].quantity
+          products[i].product.productId,
+          this.storeMetrics.purchaseCountPerProduct.get(products[i].product.productId)! + products[i].quantity
         )
       }else{
-        this.storeMetrics.purchaseCountPerProduct.set(products[i].productId, products[i].quantity)
+        this.storeMetrics.purchaseCountPerProduct.set(products[i].product.productId, products[i].quantity)
       }
     }
   }
