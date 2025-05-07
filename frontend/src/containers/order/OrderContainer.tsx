@@ -1,15 +1,21 @@
 import { useNavigate } from "react-router"
-import { useAppSelector } from "../../hooks"
+import { useAppDispatch, useAppSelector } from "../../hooks"
 import { useEffect } from "react"
+import { checkoutActions } from "../../store/checkout/checkout.state"
 
 const OrderContainer = () => {
   const checkoutState = useAppSelector((store) => store.checkout)
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
   useEffect(() => {
     if(!checkoutState.data){
       navigate("/")
+      return
     }
-  }, [checkoutState.data, navigate])
+    return () => {
+      dispatch(checkoutActions.reset())
+    }
+  }, [checkoutState.data, navigate, dispatch])
   return <div className="p-4 w-full h-full flex items-center justify-center">
   <div className="w-[480px] rounded-md p-4 max-w-full shadow-[0px_0px_3px_rgba(0,0,0,0.1)]">
     <div className="text-2xl">Order Details</div>

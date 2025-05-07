@@ -5,7 +5,7 @@ import API from "../../api";
 import { API_ENDPOINTS } from "../../constants/api";
 import type { GetCouponResponseType } from "./types";
 
-export const fetchCoupon = createAsyncThunk<GetCouponResponseType, undefined, ErrorType>(`${REDUCERS.metrics}/fetch-coupon`, async (_, { rejectWithValue }) => {
+export const fetchCoupon = createAsyncThunk<GetCouponResponseType, undefined, ErrorType>(`${REDUCERS.coupon}/fetch-coupon`, async (_, { rejectWithValue }) => {
   try {
     const response = await API.get({
       url: API_ENDPOINTS.fetchCoupon,
