@@ -43,7 +43,11 @@ describe('CartDataStore', () => {
     expect(cart.items).toHaveLength(0)
 
     cart.items.push({
-      productId: "test-product-id",
+      product:  {
+        productId: "test-product-id-1",
+        title: "Test Title 1",
+        description: "Test Description 1"
+      },
       costPerItem: 100,
       quantity: 1
     })
@@ -54,7 +58,7 @@ describe('CartDataStore', () => {
 
     expect(cart2.cartId).toBe(cart.cartId)
     expect(cart2.items).toHaveLength(1)
-    expect(cart2.items[0].productId).toBe(cart.items[0].productId)
+    expect(cart2.items[0].product.productId).toBe(cart.items[0].product.productId)
   })
   
   it("cart should be deleted", () => {

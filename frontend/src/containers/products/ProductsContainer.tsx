@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "../../hooks"
 import { fetchProducts } from "../../store/products/products.logic"
 import ProductItem from "./ProductItem"
 import { addToCart } from "../../store/cart/cart.logic"
-import toast from "react-hot-toast"
 
 const ProductsContainer = () => {
   const productsState = useAppSelector(state => state.products)

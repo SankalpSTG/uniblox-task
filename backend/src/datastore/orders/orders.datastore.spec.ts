@@ -15,7 +15,11 @@ describe('OrdersDataStore', () => {
     const order = dataStore.createOrder({
       items: [
         {
-          productId: 'test-product-id',
+          product: {
+            productId: "test-product-id-1",
+            title: "Test Title 1",
+            description: "Test Description 1"
+          },
           costPerItem: 100,
           quantity: 1,
         },

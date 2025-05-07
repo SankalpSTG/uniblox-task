@@ -1,5 +1,4 @@
 import { AnalyticsDataStore } from '@/datastore/analytics/analytics.datastore';
-import { CouponsDataStore } from '@/datastore/coupons/coupons.datastore';
 import { OrderType } from '@/datastore/orders/types';
 import { Injectable } from '@nestjs/common';
 import { GetMetricsResponseType } from './types';

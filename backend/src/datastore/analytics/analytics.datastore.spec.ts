@@ -14,11 +14,19 @@ describe('AnalyticsDataStore', () => {
     dataStore.incrementOrderCount()
     dataStore.updateCouponUsage("test-coupon")
     dataStore.updateProductPurchaseCount([{
-      productId: "test-product-id-1",
+      product: {
+        productId: "test-product-id-1",
+        title: "Test Title 1",
+        description: "Test Description 1"
+      },
       costPerItem: 100,
       quantity: 2
     },{
-      productId: "test-product-id-2",
+      product: {
+        productId: "test-product-id-2",
+        title: "Test Title 2",
+        description: "Test Description 2"
+      },
       costPerItem: 50,
       quantity: 3
     }])
