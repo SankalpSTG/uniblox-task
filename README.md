@@ -1,11 +1,23 @@
 # uniblox-task
 This Repository is for a Task given by Uniblox for Interviews
 
-Postman collection is available in the backend folder.
+Postman collection is available in the root folder.
+
+[Watch This Video for Demo](https://drive.google.com/file/d/1uQ718UNCNa-gJdOVp5GJUlq3DaUHzqkD/view?usp=sharing)
 
 ## How To Test
 
-Please copy the ```.env.example``` file to ```.env``` file.
+In the backend folder, please copy the ```.env.example``` file to ```.env``` file. Do the same for frontend as well
+
+Install dependencies for both frontend and backend using ```npm install``` command.
+
+Run backend using ```npm run start:dev``` and frontend using ```npm run dev``` command.
+
+Go to the browser and type [http://localhost:5173](http://localhost:5173). You should see the products page.
+
+Follow the above video to further test.
+
+### For testing on Postman
 
 Please import the postman collection from the backend to your postman.
 
@@ -118,4 +130,11 @@ totalDiscountAmount -> total discount applied across orders
 
 ## Frontend
 
-Under Construction
+Frontend has following main folders
+1. Layouts -> where layout and nested routes can be defined. (currently we are leveraging react router feature to write child routs in the ```App.tsx``` itself.)
+2. Containers -> The entire page is written here including state and selectors. I avoid writing routes here.
+3. Store -> Where the redux store and types are defined 
+
+The HomeLayout is the root layout that defines the top bar and contents. For each dashboard, we would ideally create a layout file, but currently we have create layouts for each page for further experiments.
+
+For CSS, I have employed tailwindcss. 

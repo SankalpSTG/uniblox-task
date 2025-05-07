@@ -50,70 +50,7 @@
 					},
 					"response": [
 						{
-							"name": "Correct Product ID",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"productId\": \"product-a\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:4000/cart/item",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "4000",
-									"path": [
-										"cart",
-										"item"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "136"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"88-fLpYbjSpwdlvWMzgn4JSOuB24G8\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 06 May 2025 15:33:58 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"success\",\n    \"data\": {\n        \"cartId\": \"maco6ftk63\",\n        \"items\": [\n            {\n                \"productId\": \"product-a\",\n                \"costPerItem\": 136,\n                \"quantity\": 1\n            }\n        ],\n        \"isLocked\": false\n    }\n}"
-						},
-						{
-							"name": "Incorrect Product ID",
+							"name": "Invalid Product ID",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -148,6 +85,10 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
@@ -161,7 +102,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 06 May 2025 15:34:17 GMT"
+									"value": "Wed, 07 May 2025 05:42:00 GMT"
 								},
 								{
 									"key": "Connection",
@@ -174,45 +115,15 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"Product Not Found\",\n    \"error\": \"Not Found\",\n    \"statusCode\": 404\n}"
-						}
-					]
-				},
-				{
-					"name": "(2) Add Item To Cart Id",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"productId\": {{cartId}},\r\n    \"cartId\": \"machr9bw26\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
 						},
-						"url": {
-							"raw": "http://localhost:4000/cart/item",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"cart",
-								"item"
-							]
-						}
-					},
-					"response": [
 						{
-							"name": "Correct Cart ID",
+							"name": "Success",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"productId\": \"product-b\",\r\n    \"cartId\": \"{{cartId}}\"\r\n}",
+									"raw": "{\r\n    \"productId\": \"product-a\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -241,20 +152,24 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "Content-Length",
-									"value": "192"
+									"value": "201"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"c0-zO5v1ESwzdtK/JYYHTD78KCVvms\""
+									"value": "W/\"c9-knXTYxc4ujjqY2Oom97r7eqQd/8\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 06 May 2025 15:34:33 GMT"
+									"value": "Wed, 07 May 2025 05:42:14 GMT"
 								},
 								{
 									"key": "Connection",
@@ -266,10 +181,40 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"success\",\n    \"data\": {\n        \"cartId\": \"maco6ftk63\",\n        \"items\": [\n            {\n                \"productId\": \"product-a\",\n                \"costPerItem\": 136,\n                \"quantity\": 1\n            },\n            {\n                \"productId\": \"product-b\",\n                \"costPerItem\": 99,\n                \"quantity\": 1\n            }\n        ],\n        \"isLocked\": false\n    }\n}"
+							"body": "{\n    \"message\": \"success\",\n    \"data\": {\n        \"cartId\": \"madihb7cu\",\n        \"items\": [\n            {\n                \"product\": {\n                    \"productId\": \"product-a\",\n                    \"title\": \"Product A\",\n                    \"description\": \"This is product A\"\n                },\n                \"quantity\": 1,\n                \"costPerItem\": 136\n            }\n        ],\n        \"isLocked\": false\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "(2) Add Item To Cart Id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"product-b\",\r\n    \"cartId\": \"{{cartId}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
+						"url": {
+							"raw": "http://localhost:4000/cart/item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"cart",
+								"item"
+							]
+						}
+					},
+					"response": [
 						{
-							"name": "Invalid / Expired Cart ID",
+							"name": "Invalid Cart ID",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -304,6 +249,10 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
@@ -317,7 +266,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 06 May 2025 15:34:52 GMT"
+									"value": "Wed, 07 May 2025 05:43:02 GMT"
 								},
 								{
 									"key": "Connection",
@@ -330,6 +279,140 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": \"Cart Not Found\",\n    \"error\": \"Not Found\",\n    \"statusCode\": 404\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"product-b\",\r\n    \"cartId\": \"{{cartId}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/cart/item",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"cart",
+										"item"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "324"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"144-/9kySU/2/puH9Y03vfcuI7iryC8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 May 2025 05:43:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"success\",\n    \"data\": {\n        \"cartId\": \"madiikro7n\",\n        \"items\": [\n            {\n                \"product\": {\n                    \"productId\": \"product-a\",\n                    \"title\": \"Product A\",\n                    \"description\": \"This is product A\"\n                },\n                \"quantity\": 1,\n                \"costPerItem\": 136\n            },\n            {\n                \"product\": {\n                    \"productId\": \"product-b\",\n                    \"title\": \"Product B\",\n                    \"description\": \"This is product B\"\n                },\n                \"quantity\": 1,\n                \"costPerItem\": 99\n            }\n        ],\n        \"isLocked\": false\n    }\n}"
+						},
+						{
+							"name": "Invalid Product ID",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": \"product-x\",\r\n    \"cartId\": \"{{cartId}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/cart/item",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"cart",
+										"item"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-wfocjRXIWSf9YBO1FuxZAwDTZLo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 May 2025 05:43:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product Not Found\",\n    \"error\": \"Not Found\",\n    \"statusCode\": 404\n}"
 						}
 					]
 				}
@@ -401,132 +484,6 @@
 					},
 					"response": [
 						{
-							"name": "Correct Cart ID",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{{checkoutBody}}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:4000/orders/checkout",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "4000",
-									"path": [
-										"orders",
-										"checkout"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "238"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"ee-nTxH5V0zAuaX1Wn64Rfa5+A8Rsw\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 06 May 2025 15:38:45 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"success\",\n    \"data\": {\n        \"items\": [\n            {\n                \"productId\": \"product-a\",\n                \"costPerItem\": 136,\n                \"quantity\": 1\n            }\n        ],\n        \"baseAmount\": 136,\n        \"discountCoupon\": null,\n        \"finalAmount\": 136,\n        \"createdAt\": \"2025-05-06T15:38:45.052Z\",\n        \"status\": \"processing\",\n        \"orderId\": \"macockosop\"\n    }\n}"
-						},
-						{
-							"name": "With Discount Coupon",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{{checkoutBody}}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "http://localhost:4000/orders/checkout",
-									"protocol": "http",
-									"host": [
-										"localhost"
-									],
-									"port": "4000",
-									"path": [
-										"orders",
-										"checkout"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "246"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"f6-XqMO397v6iuD1SeHbUggRIR4VgU\""
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 06 May 2025 15:39:29 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"message\": \"success\",\n    \"data\": {\n        \"items\": [\n            {\n                \"productId\": \"product-a\",\n                \"costPerItem\": 136,\n                \"quantity\": 1\n            }\n        ],\n        \"baseAmount\": 136,\n        \"discountCoupon\": \"macoddyfho\",\n        \"finalAmount\": 123,\n        \"createdAt\": \"2025-05-06T15:39:29.441Z\",\n        \"status\": \"processing\",\n        \"orderId\": \"macodixtev\"\n    }\n}"
-						},
-						{
 							"name": "Invalid Cart ID",
 							"originalRequest": {
 								"method": "POST",
@@ -562,6 +519,10 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
@@ -575,7 +536,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 06 May 2025 15:39:50 GMT"
+									"value": "Wed, 07 May 2025 05:31:51 GMT"
 								},
 								{
 									"key": "Connection",
@@ -588,6 +549,140 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"message\": [\n        \"cartId should not be empty\",\n        \"cartId must be a string\"\n    ],\n    \"error\": \"Bad Request\",\n    \"statusCode\": 400\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{{checkoutBody}}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/orders/checkout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"orders",
+										"checkout"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "304"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"130-BFoMyUH3YN6hHp5dmawuqdX6pls\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 May 2025 05:42:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"success\",\n    \"data\": {\n        \"items\": [\n            {\n                \"product\": {\n                    \"productId\": \"product-a\",\n                    \"title\": \"Product A\",\n                    \"description\": \"This is product A\"\n                },\n                \"quantity\": 1,\n                \"costPerItem\": 136\n            }\n        ],\n        \"baseAmount\": 136,\n        \"discountCoupon\": null,\n        \"finalAmount\": 136,\n        \"createdAt\": \"2025-05-07T05:42:54.491Z\",\n        \"status\": \"processing\",\n        \"orderId\": \"madii61nmb\"\n    }\n}"
+						},
+						{
+							"name": "Success With Discount",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{{checkoutBody}}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4000/orders/checkout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"orders",
+										"checkout"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "557"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22d-6fxx2idq5Br5Cf3EhgLQ7zv1iUw\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 May 2025 05:44:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"success\",\n    \"data\": {\n        \"items\": [\n            {\n                \"product\": {\n                    \"productId\": \"product-a\",\n                    \"title\": \"Product A\",\n                    \"description\": \"This is product A\"\n                },\n                \"quantity\": 1,\n                \"costPerItem\": 136\n            },\n            {\n                \"product\": {\n                    \"productId\": \"product-b\",\n                    \"title\": \"Product B\",\n                    \"description\": \"This is product B\"\n                },\n                \"quantity\": 1,\n                \"costPerItem\": 99\n            },\n            {\n                \"product\": {\n                    \"productId\": \"product-c\",\n                    \"title\": \"Product C\",\n                    \"description\": \"This is product C\"\n                },\n                \"quantity\": 2,\n                \"costPerItem\": 282\n            }\n        ],\n        \"baseAmount\": 799,\n        \"discountCoupon\": \"madijvlcel\",\n        \"finalAmount\": 720,\n        \"createdAt\": \"2025-05-07T05:44:35.600Z\",\n        \"status\": \"processing\",\n        \"orderId\": \"madikc28ep\"\n    }\n}"
 						}
 					]
 				}
@@ -603,7 +698,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"if(pm.response.code >= 200 && pm.response.code <= 300){\r",
+									"if(pm.response.code >= 200 && pm.response.code < 300){\r",
 									"    pm.collectionVariables.set(\"discountCode\", pm.response.json().data);\r",
 									"}"
 								],
@@ -630,7 +725,7 @@
 					},
 					"response": [
 						{
-							"name": "On Nth Order",
+							"name": "Success",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -656,6 +751,10 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
@@ -665,11 +764,11 @@
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"29-DVK0POGNT7VBsJ8UVIuvFbUAC04\""
+									"value": "W/\"29-1IJJkhWnwjgxpf6mW9IoE9xdFwU\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 06 May 2025 15:36:45 GMT"
+									"value": "Wed, 07 May 2025 05:44:30 GMT"
 								},
 								{
 									"key": "Connection",
@@ -681,10 +780,10 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"success\",\n    \"data\": \"macoa0n38q\"\n}"
+							"body": "{\n    \"message\": \"success\",\n    \"data\": \"madijvlcel\"\n}"
 						},
 						{
-							"name": "Ineligible Order",
+							"name": "Ineligible",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -710,6 +809,10 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
@@ -723,7 +826,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 06 May 2025 15:37:17 GMT"
+									"value": "Wed, 07 May 2025 05:44:59 GMT"
 								},
 								{
 									"key": "Connection",
@@ -759,7 +862,7 @@
 					},
 					"response": [
 						{
-							"name": "Metrics",
+							"name": "Success",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -785,20 +888,24 @@
 									"value": "Express"
 								},
 								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "Content-Length",
-									"value": "216"
+									"value": "227"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"d8-xh0ZrLsgcP3nWLIgDIaqp2CaThg\""
+									"value": "W/\"e3-bkQh+2MrYuSHClhV3ZZdQ4oZcRc\""
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 06 May 2025 15:37:30 GMT"
+									"value": "Wed, 07 May 2025 05:45:09 GMT"
 								},
 								{
 									"key": "Connection",
@@ -810,7 +917,89 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"message\": \"success\",\n    \"data\": {\n        \"numberOfOrders\": 10,\n        \"totalPurchaseAmount\": 1446,\n        \"purchaseCountPerProduct\": {\n            \"product-a\": 10,\n            \"product-b\": 1\n        },\n        \"totalProductsPurchased\": 11,\n        \"usedCoupons\": [\n            \"macoa0n38q\"\n        ],\n        \"totalDiscountAmount\": 13\n    }\n}"
+							"body": "{\n    \"message\": \"success\",\n    \"data\": {\n        \"numberOfOrders\": 5,\n        \"totalPurchaseAmount\": 1363,\n        \"purchaseCountPerProduct\": {\n            \"product-a\": 5,\n            \"product-b\": 2,\n            \"product-c\": 2\n        },\n        \"totalProductsPurchased\": 9,\n        \"usedCoupons\": [\n            \"madijvlcel\"\n        ],\n        \"totalDiscountAmount\": 79\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:4000/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4000",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "519"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"207-n1qNS2s18bJDHeiHpXyr/6BbMoY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 07 May 2025 05:45:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"success\",\n    \"data\": [\n        {\n            \"productId\": \"product-a\",\n            \"title\": \"Product A\",\n            \"description\": \"This is product A\",\n            \"costPerItem\": 136\n        },\n        {\n            \"productId\": \"product-b\",\n            \"title\": \"Product B\",\n            \"description\": \"This is product B\",\n            \"costPerItem\": 99\n        },\n        {\n            \"productId\": \"product-c\",\n            \"title\": \"Product C\",\n            \"description\": \"This is product C\",\n            \"costPerItem\": 282\n        },\n        {\n            \"productId\": \"product-d\",\n            \"title\": \"Product D\",\n            \"description\": \"This is product D\",\n            \"costPerItem\": 331\n        },\n        {\n            \"productId\": \"product-e\",\n            \"title\": \"Product E\",\n            \"description\": \"This is product E\",\n            \"costPerItem\": 195\n        }\n    ]\n}"
 						}
 					]
 				}
